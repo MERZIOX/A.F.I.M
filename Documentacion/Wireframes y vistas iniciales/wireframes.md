@@ -10,12 +10,15 @@ Se planea implementar una sección de inicio de sesión en el cual, el cliente i
 ![](https://github.com/KelvinMR1997/A.F.I.M/blob/main/Documentacion/Wireframes%20y%20vistas%20iniciales/imagenes/Login.PNG)
 
 **Vista principal:**
+
 ![](https://github.com/KelvinMR1997/A.F.I.M/blob/main/Documentacion/Wireframes%20y%20vistas%20iniciales/imagenes/index.PNG)
 
 **vista principal - agregar productos:**
+
 ![](https://github.com/KelvinMR1997/A.F.I.M/blob/main/Documentacion/Wireframes%20y%20vistas%20iniciales/imagenes/index-a%C3%B1adir.PNG)
 
 **Gestionar facturas:**
+
 ![](https://raw.githubusercontent.com/KelvinMR1997/A.F.I.M/main/Documentacion/Wireframes%20y%20vistas%20iniciales/imagenes/Facturas.PNG)
 
 **Gestionar facturas - editar factura:**
@@ -23,16 +26,21 @@ Se planea implementar una sección de inicio de sesión en el cual, el cliente i
 ![](https://github.com/KelvinMR1997/A.F.I.M/blob/main/Documentacion/Wireframes%20y%20vistas%20iniciales/imagenes/facturas-editar.PNG)
 
 **Gestionar facturas - eliminar factura:**
+
 ![](https://github.com/KelvinMR1997/A.F.I.M/blob/main/Documentacion/Wireframes%20y%20vistas%20iniciales/imagenes/facturas-eliminar.PNG)
 
 **Gestionar productos :**
+
 ![](https://github.com/KelvinMR1997/A.F.I.M/blob/main/Documentacion/Wireframes%20y%20vistas%20iniciales/imagenes/productos.PNG)
 
 **Gestionar productos - agregar productos:**
+
 ![](https://github.com/KelvinMR1997/A.F.I.M/blob/main/Documentacion/Wireframes%20y%20vistas%20iniciales/imagenes/productos-agregar.PNG)
 
 **Gestionar productos - Editar productos:**
+
 ![](https://github.com/KelvinMR1997/A.F.I.M/blob/main/Documentacion/Wireframes%20y%20vistas%20iniciales/imagenes/productos-editar.PNG)
 
 **Gestionar productos - Eliminar productos:**
+
 ![](https://github.com/KelvinMR1997/A.F.I.M/blob/main/Documentacion/Wireframes%20y%20vistas%20iniciales/imagenes/productos-eliminar.PNG)
