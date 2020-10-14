@@ -1,3 +1,3 @@
-# Arquitectura y servicios AFI
+# Arquitectura y servicios AFIM
 ---
-![](/AFIM Arquitectura y servicios.jpeg)
+![](AFIM Arquitectura y servicios.jpeg)
