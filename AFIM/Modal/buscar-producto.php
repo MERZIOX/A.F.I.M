@@ -4,6 +4,7 @@
 $consulta = "SELECT * FROM productos";
 $productos = mysqli_query($conexion, $consulta);
 
+
 ?>
 
 
@@ -52,7 +53,7 @@ $productos = mysqli_query($conexion, $consulta);
               <td><?php echo $prod['nombre']; ?></td>
               <td><input class="form-control" style="width: 50%;" type="number" name="" value="<?php echo $prod['existencias']; ?>" id=""></td>
               <td><?php echo $prod['precio_compra']; ?></td>
-              <td> <a class="btn btn-success" href="../controllers/crear-objeto-producto.php?id=<?php echo $prod['ID_productos'];?> ">+</a> </td>
+              <td> <a class="btn btn-success" href="controllers/crear-objeto-producto.php?id=<?php echo $prod['ID_productos'];?> ">+</a> </td>
             </tr>
             <?php
             }

@@ -1,11 +1,11 @@
 <?php
-require_once("controllers/db.php");
 
-$query ="SELECT * FROM facturas";
+require_once("controllers/db.php");
+require_once("controllers/crear-objeto-producto.php");
+
+$query = "SELECT * FROM facturas";
 
 $registro = mysqli_query($conexion, $query);
-
-include("controllers\crear-objeto-producto.php");
 
 require_once("modal/buscar-producto.php");
 ?>
@@ -52,7 +52,7 @@ require_once("modal/buscar-producto.php");
 	<div id="wrapper">
 
 		<!-- Header y Sidebar -->
-		<?php include_once("views/navbar-header.php");?>
+		<?php include_once("views/navbar-header.php"); ?>
 
 		<div id="page-wrapper">
 
@@ -86,19 +86,16 @@ require_once("modal/buscar-producto.php");
 							<div class="form-group row">
 								<label for="nombre_cliente" class="col-md-1 control-label">Cliente</label>
 								<div class="col-md-3">
-									<input type="text" class="form-control input-sm" id="nombre_cliente"
-										placeholder="Selecciona un cliente" required>
+									<input type="text" class="form-control input-sm" id="nombre_cliente" placeholder="Selecciona un cliente" required>
 									<input id="id_cliente" type='hidden'>
 								</div>
 								<label for="tel1" class="col-md-1 control-label">Teléfono</label>
 								<div class="col-md-2">
-									<input type="text" class="form-control input-sm" id="tel1" placeholder="Teléfono"
-										readonly>
+									<input type="text" class="form-control input-sm" id="tel1" placeholder="Teléfono" readonly>
 								</div>
 								<label for="mail" class="col-md-1 control-label">Email</label>
 								<div class="col-md-3">
-									<input type="text" class="form-control input-sm" id="mail" placeholder="Email"
-										readonly>
+									<input type="text" class="form-control input-sm" id="mail" placeholder="Email" readonly>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -110,8 +107,7 @@ require_once("modal/buscar-producto.php");
 								</div>
 								<label for="tel2" class="col-md-1 control-label">Fecha</label>
 								<div class="col-md-2">
-									<input type="text" class="form-control input-sm" id="fecha"
-										value="<?php echo date("d/m/Y");?>" readonly>
+									<input type="text" class="form-control input-sm" id="fecha" value="<?php echo date("d/m/Y"); ?>" readonly>
 								</div>
 								<label for="email" class="col-md-1 control-label">Pago</label>
 								<div class="col-md-3">
@@ -127,16 +123,13 @@ require_once("modal/buscar-producto.php");
 
 							<div class="col-md-12">
 								<div class="pull-right">
-									<button type="button" class="btn btn-default" data-toggle="modal"
-										data-target="#nuevoProducto">
+									<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProducto">
 										<span class="glyphicon glyphicon-plus"></span> Nuevo producto
 									</button>
-									<button type="button" class="btn btn-default" data-toggle="modal"
-										data-target="#nuevoCliente">
+									<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoCliente">
 										<span class="glyphicon glyphicon-user"></span> Nuevo cliente
 									</button>
-									<button type="button" class="btn btn-primary" data-toggle="modal"
-										data-target="#buscar-producto">
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buscar-producto">
 										<span class="glyphicon glyphicon-search"></span> Agregar productos
 									</button>
 									<button type="submit" class="btn btn-default">
@@ -148,6 +141,28 @@ require_once("modal/buscar-producto.php");
 						</form>
 					</div>
 					<br>
+					<?php
+					if (isset($_GET['id'])) {
+
+						$ID = $_GET['id'];
+						$query5 = "SELECT * FROM productos WHERE ID_productos = $ID";
+						$resultado5 = mysqli_query($conexion, $query5);
+
+						$res = mysqli_fetch_array($resultado5);
+
+
+						$_SESSION['id'] = $res['ID_productos'];
+						$_SESSION['nombre'] = $res['nombre'];
+						$_SESSION['existencias'] = $res['existencias'];
+						$_SESSION['precioCompra'] = $res['precio_compra'];
+
+						echo $_SESSION['id'];
+						echo $_SESSION['nombre'];
+						echo $_SESSION['existencias'];
+						echo $_SESSION['precioCompra'];
+					} ?>
+
+
 					<table class="table table-borderless ">
 						<thead>
 							<tr>
@@ -160,14 +175,21 @@ require_once("modal/buscar-producto.php");
 						</thead>
 						<tbody id="cuerpo-tabla">
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-
+								<td>
+									<? echo $_SESSION['id'];?>
+								</td>
+								<td>
+									<? echo $_SESSION['nombre'];?>
+								</td>
+								<td>
+									<? echo $_SESSION['existencias'];?>
+								</td>
 								<td>SUBTOTAL$</td>
-								<td></td>
+								<td>
+									<? echo $_SESSION['precioCompra']; ?>
+								</td>
 							</tr>
-							<tr >
+							<tr>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -175,7 +197,7 @@ require_once("modal/buscar-producto.php");
 								<td>IVA(19%)</td>
 								<td></td>
 							</tr>
-							<tr >
+							<tr>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -183,13 +205,10 @@ require_once("modal/buscar-producto.php");
 								<td>TOTAL</td>
 								<td></td>
 							</tr>
-								
+
 						</tbody>
 					</table>
-<!-- 				<input id="id" class="invisible" type="text" value="<?php echo $prod->id; ?>">
-				<input id="nombre" class="invisible" type="text" value="<?php echo $prod->nombre; ?>">
-				<input id="existencia" class="invisible" type="text" value="<?php echo $prod->existencias; ?>">
-				<input id="precio" class="invisible" type="text" value="<?php echo $prod->precioCompra; ?>"> -->
+
 				</div>
 
 			</div>
@@ -210,26 +229,24 @@ require_once("modal/buscar-producto.php");
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/editar-factura.js"></script>
-	<script >
+	<script>
+		$(Document).ready(function() {
 
-$(Document).ready(function(){
+			function valores() {
+				var id, nombre, existencias, precio, celda, cuerpo;
 
-	function valores(){
-	  var id, nombre, existencias, precio, celda, cuerpo;
+				id = $("#id").val();
+				nombre = $("#nombre").val();
+				existencias = $("#existencias").val();
+				precio = $("#precio").val();
 
-	  id = $("#id").val();
-	  nombre = $("#nombre").val();
-	  existencias = $("#existencias").val();
-	  precio = $("#precio").val();
+				celda = "<tr><td></td><td></td><td></td><td>SUBTOTAL$</td><td></td></tr>";
+				$("#cuerpo-tabla").append(celda);
 
-	   celda = "";
-	   cuerpo =$("cuerpo-tabla").append(celda)
-	   
-	}
+			}
+			valores();
 
-
-}) ;
-
+		});
 	</script>
 
 </body>

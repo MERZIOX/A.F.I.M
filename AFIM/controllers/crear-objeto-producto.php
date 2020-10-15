@@ -1,38 +1,25 @@
-<?php 
-
-if(isset($_GET['id'])){
+<?php
 require_once("db.php");
 
-    $ID = $_GET['id']; 
+if (isset($_GET['id'])) {
+    $ID = intval( $_GET['id']);
+
     $query5 = "SELECT * FROM productos WHERE ID_productos = $ID";
-$resultado5 = mysqli_query($conexion, $query5);
+    $resultado5 = mysqli_query($conexion, $query5);
 
-$res = mysqli_fetch_array($resultado5);
-
-$idp =  $res['ID_productos'];
-$nom =$res['nombre'];
-$exis =$res['existencias'];
-$pc =$res['precio_compra'];
+    $res = mysqli_fetch_array($resultado5);
 
 
+    $_SESSION['id'] = $res['ID_productos'];
+    $_SESSION['nombre'] = $res['nombre'];
+    $_SESSION['existencias'] = $res['existencias'];
+    $_SESSION['precioCompra'] = $res['precio_compra'];
 
-class Producto {
-
-    // Declaración de una propiedad
-    public $id = null;
-    public $nombre = null;
-    public $existencias = null;
-    public $precioCompra = null;
+    echo $_SESSION['id'];
+    echo $_SESSION['nombre'];
+    echo $_SESSION['existencias'];
+    echo $_SESSION['precioCompra'];
+    /*  header("location: ../create-factura.php");  */
 
 }
-
-$prod = new Producto();
-$prod->id=$idp;
-$prod->nombre=$nom;
-$prod->existencias=$exis;
-$prod->precioCompra=$pc;
-
-header("location: ../create-factura.php");
-}
-
 ?>

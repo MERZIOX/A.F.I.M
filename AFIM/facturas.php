@@ -3,7 +3,7 @@ require_once("controllers/db.php");
 
 $query ="SELECT * FROM facturas";
 
-$query2 = "SELECT * FROM clientes, facturas 
+$query2 = "SELECT * FROM clientes, facturas
 WHERE id_cliente_FK = ID_clientes";
 /* $registro = mysqli_query($conexion, $query); */
 $registro2 = mysqli_query($conexion, $query2);
@@ -110,7 +110,7 @@ header("location: index.php");
 
                                         <td><?php echo $reg['ID_factura'];?></td>
                                         <td><?php echo $reg['fecha_creada']; ?></td>
-                                        <td><?php echo $reg['nombre']; ?></td>
+                                        <td><?php echo $reg['nombre'], $reg['apellido1'], $reg['apellido2']; ?></td>
                                         <td><?php echo "mundo"; ?></td>
                                     </tr>
 
