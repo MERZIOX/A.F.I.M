@@ -1,9 +1,26 @@
 <?php
 require_once("controllers/db.php");
 
-"SELECT * FROM facturas, clientes, productos, WHERE ID_cliente_FK =  ID_cliente and id_factura_FK = ID_factura and " 
+$query ="SELECT * FROM facturas";
+
+$query2 = "SELECT * FROM clientes, facturas 
+WHERE id_cliente_FK = ID_cliente";
+/* $registro = mysqli_query($conexion, $query); */
+$registro2 = mysqli_query($conexion, $query2);
+
+
+/* if (!$registro2) {
+header("location: index.php");
+} else {
+    header("location: LICENSE");
+} */
+
 
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,13 +81,15 @@ require_once("controllers/db.php");
                             </li>
                         </ol>
                     </div>
+                    
                 </div>
                 <!-- /.row -->
                 <hr>
                 <!-- Tabla de facturas -->
                 <div class="row">
+                <a class="btn btn-success" href="create-factura.php">Nueva factura</a>
                     <div class="col-lg-12">
-                        <h2>Bordered with Striped Rows</h2>
+                        <h2>Historial de facturas</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
@@ -83,14 +102,22 @@ require_once("controllers/db.php");
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($variable as $key => $value) {
+                                    while ($reg = mysqli_fetch_array($registro2)) {
                                         
-                                    }
-                                    
-                                    ?>
-                            <tr>
+                                        
+                                        ?>
+                                    <tr>
 
-                            </tr>
+                                        <td><?php echo $reg['ID_factura'];?></td>
+                                        <td><?php echo $reg['fecha_creada']; ?></td>
+                                        <td><?php echo $reg['nombre']; ?></td>
+                                        <td><?php echo "mundo"; ?></td>
+                                    </tr>
+
+                                    <?php
+                                    }
+                            
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
