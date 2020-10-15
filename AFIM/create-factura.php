@@ -186,11 +186,10 @@ require_once("modal/buscar-producto.php");
 								
 						</tbody>
 					</table>
-				<input class="invisible" type="text" value="<?php echo ""; ?>">
-				<input class="invisible" type="text" value="<?php echo ""; ?>">
-				<input class="invisible" type="text" value="<?php echo ""; ?>">
-				<input class="invisible" type="text" value="<?php echo ""; ?>">
-				<input class="invisible" type="text" value="<?php echo ""; ?>">
+<!-- 				<input id="id" class="invisible" type="text" value="<?php echo $prod->id; ?>">
+				<input id="nombre" class="invisible" type="text" value="<?php echo $prod->nombre; ?>">
+				<input id="existencia" class="invisible" type="text" value="<?php echo $prod->existencias; ?>">
+				<input id="precio" class="invisible" type="text" value="<?php echo $prod->precioCompra; ?>"> -->
 				</div>
 
 			</div>
@@ -215,6 +214,18 @@ require_once("modal/buscar-producto.php");
 
 $(Document).ready(function(){
 
+	function valores(){
+	  var id, nombre, existencias, precio, celda, cuerpo;
+
+	  id = $("#id").val();
+	  nombre = $("#nombre").val();
+	  existencias = $("#existencias").val();
+	  precio = $("#precio").val();
+
+	   celda = "";
+	   cuerpo =$("cuerpo-tabla").append(celda)
+	   
+	}
 
 
 }) ;

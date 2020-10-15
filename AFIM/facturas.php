@@ -4,7 +4,7 @@ require_once("controllers/db.php");
 $query ="SELECT * FROM facturas";
 
 $query2 = "SELECT * FROM clientes, facturas 
-WHERE id_cliente_FK = ID_cliente";
+WHERE id_cliente_FK = ID_clientes";
 /* $registro = mysqli_query($conexion, $query); */
 $registro2 = mysqli_query($conexion, $query2);
 
